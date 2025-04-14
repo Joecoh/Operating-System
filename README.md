@@ -9,6 +9,7 @@ This repo contains **well-structured C programs** covering **core OS concepts**,
 
 ## 📚 Table of Contents
 
+- [OS File Handling](#OS_FileHandling_Programs)
 - [Process Management Using System Calls](#process-management-using-system-calls)
 - [CPU Scheduling Algorithms](#cpu-scheduling-algorithms)
 - [Inter-Process Communication (IPC)](#inter-process-communication-ipc)
