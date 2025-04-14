@@ -9,19 +9,19 @@ This repo contains **well-structured C programs** covering **core OS concepts**,
 
 ## 📚 Table of Contents
 
-- [3️⃣ Process Management](#-process-management-using-system-calls)
-- [4️⃣ CPU Scheduling Algorithms](#-cpu-scheduling-algorithms)
-- [5️⃣ Inter-Process Communication (IPC)](#-inter-process-communication-ipc)
-- [6️⃣ Semaphore Implementation](#6-semaphore-implementation)
-- [7️⃣ Banker’s Algorithm](#7-deadlock-avoidance---bankers-algorithm)
-- [8️⃣ Deadlock Detection](#8-deadlock-detection-algorithm)
-- [9️⃣ Thread Implementation](#9-implementation-of-thread)
-- [🔟 Paging Techniques](#10-paging-techniques)
-- [1️⃣1️⃣ Memory Allocation Methods](#11-memory-allocation-methods)
-- [1️⃣2️⃣ Page Replacement Algorithms](#12-page-replacement-algorithm)
-- [1️⃣3️⃣ File Organization Techniques](#13-file-organization-techniques)
-- [1️⃣4️⃣ File Allocation Strategies](#14-file-allocation-strategies)
-- [1️⃣5️⃣ Disk Scheduling Algorithms](#15-disk-scheduling-algorithms)
+- [Process Management Using System Calls](#process-management-using-system-calls)
+- [CPU Scheduling Algorithms](#cpu-scheduling-algorithms)
+- [Inter-Process Communication (IPC)](#inter-process-communication-ipc)
+- [Semaphore Implementation](#semaphore-implementation)
+- [Deadlock Avoidance – Banker’s Algorithm](#deadlock-avoidance--bankers-algorithm)
+- [Deadlock Detection Algorithm](#deadlock-detection-algorithm)
+- [Implementation Of Thread](#implementation-of-thread)
+- [Paging Techniques](#paging-techniques)
+- [Memory Allocation Methods](#memory-allocation-methods)
+- [Page Replacement Algorithm](#page-replacement-algorithm)
+- [File Organization Techniques](#file-organization-techniques)
+- [File Allocation Strategies](#file-allocation-strategies)
+- [Disk Scheduling Algorithms](#disk-scheduling-algorithms)
 
 ---
 
