@@ -1,4 +1,4 @@
-# 💻 Operating Systems Laboratory – Complete Guide with C Programs
+# 💻 Operating Systems Laboratory
 
 Welcome to the **Operating Systems Lab** repository! 🚀  
 This repo contains **well-structured C programs** covering **core OS concepts**, implemented using **system calls, process management, memory allocation, scheduling algorithms**, and more.
