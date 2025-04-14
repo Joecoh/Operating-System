@@ -36,6 +36,7 @@ This repo contains **well-structured C programs** covering **core OS concepts**,
 | `dir_example.c` | Uses `opendir()`, `readdir()`, and `closedir()` to read directories. |
 
 ---
+## These Following will be uploaded soon
 
 ## 4️⃣ CPU Scheduling Algorithms
 
