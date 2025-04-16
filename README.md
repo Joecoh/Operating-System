@@ -37,7 +37,6 @@ This repo contains **well-structured C programs** covering **core OS concepts**,
 | `dir_example.c` | Uses `opendir()`, `readdir()`, and `closedir()` to read directories. |
 
 ---
-## These Following will be uploaded soon
 
 ## 4️⃣ CPU Scheduling Algorithms
 
@@ -49,6 +48,7 @@ This repo contains **well-structured C programs** covering **core OS concepts**,
 | `round_robin.c` | Round Robin Scheduling |
 
 ---
+## These Following will be uploaded soon
 
 ## 5️⃣ Inter-Process Communication (IPC)
 
