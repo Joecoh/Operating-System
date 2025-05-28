@@ -1,31 +1,35 @@
-echo "Enter number of processes:"
-read n
+#include <stdio.h>
 
-declare -a bt wait tat
-total_wt=0
-total_tat=0
+int main() {
+    int n, i;
+    int bt[20], wt[20], tat[20];
+    int total_wt = 0, total_tat = 0;
 
-for (( i=0; i<n; i++ ))
-do
-    echo "Enter burst time for process $((i+1)):"
-    read bt[i]
-done
+    printf("Enter number of processes: ");
+    scanf("%d", &n);
 
-wait[0]=0
+    printf("Enter burst time for each process:\n");
+    for(i = 0; i < n; i++) {
+        printf("Process %d: ", i + 1);
+        scanf("%d", &bt[i]);
+    }
 
-for (( i=1; i<n; i++ ))
-do
-    wait[i]=$(( wait[i-1] + bt[i-1] ))
-done
+    wt[0] = 0; // waiting time for first process is 0
 
-echo "P#  Burst  Wait  Turnaround"
-for (( i=0; i<n; i++ ))
-do
-    tat[i]=$(( bt[i] + wait[i] ))
-    total_wt=$(( total_wt + wait[i] ))
-    total_tat=$(( total_tat + tat[i] ))
-    echo "$((i+1))   ${bt[i]}     ${wait[i]}      ${tat[i]}"
-done
+    for(i = 1; i < n; i++) {
+        wt[i] = wt[i - 1] + bt[i - 1];
+    }
 
-echo "Average Waiting Time: $(echo "scale=2; $total_wt/$n" | bc)"
-echo "Average Turnaround Time: $(echo "scale=2; $total_tat/$n" | bc)"
+    printf("P#\tBurst\tWait\tTurnaround\n");
+    for(i = 0; i < n; i++) {
+        tat[i] = bt[i] + wt[i];
+        total_wt += wt[i];
+        total_tat += tat[i];
+        printf("%d\t%d\t%d\t%d\n", i + 1, bt[i], wt[i], tat[i]);
+    }
+
+    printf("Average Waiting Time = %.2f\n", (float)total_wt / n);
+    printf("Average Turnaround Time = %.2f\n", (float)total_tat / n);
+
+    return 0;
+}
