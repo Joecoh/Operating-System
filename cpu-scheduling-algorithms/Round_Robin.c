@@ -1,116 +1,55 @@
 #include <stdio.h>
 
 int main() {
-    int i, x = -1, k[10], m = 0, n, t, s = 0;
-    int a[50], temp, b[50], p[10], bur[10], bur1[10];
-    int wat[10], tur[10], ttur = 0, twat = 0, j = 0;
-    float awat, atur;
+    int n, i, time_quantum;
+    int bt[20], rem_bt[20], wt[20], tat[20];
+    int t = 0, done;
 
-    printf("Enter no. of process: ");
+    printf("Enter number of processes: ");
     scanf("%d", &n);
 
-    for (i = 0; i < n; i++) {
-        printf("Burst time for process P%d: ", i + 1);
-        scanf("%d", &bur[i]);
-        bur1[i] = bur[i];
+    printf("Enter burst time for each process:\n");
+    for(i = 0; i < n; i++) {
+        printf("Process %d: ", i + 1);
+        scanf("%d", &bt[i]);
+        rem_bt[i] = bt[i];  // initialize remaining burst time
+        wt[i] = 0;          // initialize waiting time
     }
 
-    printf("Enter the time slice (in ms): ");
-    scanf("%d", &t);
+    printf("Enter time quantum: ");
+    scanf("%d", &time_quantum);
 
-    for (i = 0; i < n; i++) {
-        b[i] = bur[i] / t;
-        if ((bur[i] % t) != 0)
-            b[i] += 1;
-        m += b[i];
-    }
+    while(1) {
+        done = 1;
+        for(i = 0; i < n; i++) {
+            if(rem_bt[i] > 0) {
+                done = 0;  // there is a pending process
 
-    printf("\n\tRound Robin Scheduling\n");
-    printf("\nGANTT Chart\n");
-
-    for (i = 0; i < m; i++)
-        printf(" ----------------- ");
-    printf("\n");
-
-    a[0] = 0;
-
-    while (j < m) {
-        if (x == n - 1)
-            x = 0;
-        else
-            x++;
-
-        if (bur[x] >= t) {
-            bur[x] -= t;
-            a[j + 1] = a[j] + t;
-            if (b[x] == 1) {
-                p[s] = x;
-                k[s] = a[j + 1];
-                s++;
-            }
-            j++;
-            b[x] -= 1;
-            printf("P%d |", x + 1);
-        } else if (bur[x] != 0) {
-            a[j + 1] = a[j] + bur[x];
-            bur[x] = 0;
-            if (b[x] == 1) {
-                p[s] = x;
-                k[s] = a[j + 1];
-                s++;
-            }
-            j++;
-            b[x] -= 1;
-            printf("P%d |", x + 1);
-        }
-    }
-
-    printf("\n");
-    for (i = 0; i < m; i++)
-        printf(" ---------------------- ");
-    printf("\n");
-
-    for (j = 0; j <= m; j++)
-        printf("%d\t", a[j]);
-
-    for (i = 0; i < n; i++) {
-        for (j = i + 1; j < n; j++) {
-            if (p[i] > p[j]) {
-                temp = p[i];
-                p[i] = p[j];
-                p[j] = temp;
-                temp = k[i];
-                k[i] = k[j];
-                k[j] = temp;
+                if(rem_bt[i] > time_quantum) {
+                    t += time_quantum;
+                    rem_bt[i] -= time_quantum;
+                } else {
+                    t += rem_bt[i];
+                    wt[i] = t - bt[i];  // waiting time = current time - burst time
+                    rem_bt[i] = 0;
+                }
             }
         }
+        if(done)
+            break;
     }
 
-    for (i = 0; i < n; i++) {
-        wat[i] = k[i] - bur1[i];
-        tur[i] = k[i];
+    int total_wt = 0, total_tat = 0;
+    printf("P#\tBurst\tWait\tTurnaround\n");
+    for(i = 0; i < n; i++) {
+        tat[i] = bt[i] + wt[i];
+        total_wt += wt[i];
+        total_tat += tat[i];
+        printf("%d\t%d\t%d\t%d\n", i + 1, bt[i], wt[i], tat[i]);
     }
 
-    for (i = 0; i < n; i++) {
-        ttur += tur[i];
-        twat += wat[i];
-    }
-
-    printf("\n\n");
-    for (i = 0; i < 30; i++)
-        printf("-");
-    printf("\nProcess\tBurst\tTrnd\tWait\n");
-    for (i = 0; i < 30; i++)
-        printf("-");
-    for (i = 0; i < n; i++)
-        printf("\nP%-4d\t%4d\t%4d\t%4d", p[i] + 1, bur1[i], tur[i], wat[i]);
-    printf("\n");
-    for (i = 0; i < 30; i++)
-        printf("-");
-    awat = (float)twat / n;
-    atur = (float)ttur / n;
-    printf("\n\nAverage waiting time: %.2f ms", awat);
-    printf("\nAverage turn around time : %.2f ms\n", atur);
+    printf("Average Waiting Time = %.2f\n", (float)total_wt / n);
+    printf("Average Turnaround Time = %.2f\n", (float)total_tat / n);
 
     return 0;
 }
